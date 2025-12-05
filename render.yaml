@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: attendance-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: MONGODB_URI
+        value: mongodb+srv://kaziuser:securepassword123@cluster0.bneqb6q.mongodb.net/attendance?retryWrites=true&w=majority
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        value: https://attendance-frontend.vercel.app
